@@ -56,7 +56,7 @@
 				<li class="nav-item mb-3">روز جهانی برنامه نویس</li>
 				<li class="nav-item mb-3">روز بزرگداشت حکیم عمر خیام </li>
 				<li class="nav-item mb-3">روز بزرگداشت حکیم عمر خیام </li>
-				</ul>		
+				</ul>
 			</div>
 			<!-- Footer Widget -->
 			<div class="col-sm-6 col-lg-3 mb-4">
@@ -83,19 +83,19 @@
 			<div class="row align-items-center justify-content-md-between py-4">
 				<div class="col-md-4">
 					<!-- Copyright -->
-					<div class="text-center text-md-start fw-bold">تمامی حقوق محفوظ است 
+					<div class="text-center text-md-start fw-bold">تمامی حقوق محفوظ است
 					</div>
 				</div>
 				<div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-center">
-				
+
 					<!-- Links -->
 					<ul class="nav fw-bold text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
 						<li class="nav-item"><a class="nav-link" href="#">آرشیو</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">درباره ما</a></li>
 
 						<li class="nav-item"><a class="nav-link" href="#">تماس با ما</a></li>
-					
-					
+
+
 					</ul>
 				</div>
 <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
@@ -111,7 +111,7 @@
 	</ul>
 </div>
 
-					
+
 			</div>
 		</div>
 	</div>
@@ -156,7 +156,7 @@ JS libraries, plugins and custom scripts -->
 		});
 </script> -->
 
-			
+
 					<div class="row g-4">
 						<!-- Left sidebar START -->
 						<div class="col-lg-7 col-xxl-8">
@@ -212,7 +212,7 @@ JS libraries, plugins and custom scripts -->
 										<div class="form-text mb-3">توضیحات مختصری برای پروفایل شما</div>
 										<textarea class="form-control"
 											rows="10" cols="10" style="min-height: 300px;" >من راهی برای دریافت پول برای سرگرمی مورد علاقه‌ام پیدا کرده‌ام و این کار را در حالی انجام می‌دهم که رویای سفر به دور دنیا را دنبال می‌کنم.</textarea>
-										
+
 									</div>
 									<!-- Save button -->
 									<div class="d-flex justify-content-end mt-4">
@@ -250,11 +250,11 @@ JS libraries, plugins and custom scripts -->
 								</div>
 							</div>
 							<!-- Social links END -->
-			
-			
+
+
 						</div>
 						<!-- Left sidebar END -->
-			
+
 						<!-- Right sidebar START -->
 						<div class="col-lg-5 col-xxl-4">
 							<!-- Profile Setting START -->
@@ -305,10 +305,15 @@ JS libraries, plugins and custom scripts -->
 						</div>
 					</div>
 				</div>
-		
+
 			</div>
 		</div>
 	</div>
+
+@error('successLogin')
+@include('notifications.successMessage')
+@enderror()
+
 	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 	<script src=" 	https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js
 "></script>
