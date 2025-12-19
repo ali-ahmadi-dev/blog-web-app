@@ -12,7 +12,7 @@
 	<meta name="description" content="قالب وبلاگ و مجله خبری مبتنی بر بوت استرپ">
 
 
-	
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="{{Vite::image('favicon.ico')}}">
 
@@ -20,8 +20,13 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css" />
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("registerFrom").submit();
+        }
+    </script>
 
- 
 
 
 

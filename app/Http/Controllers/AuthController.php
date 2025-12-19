@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\WelcomeMail;
 use App\Models\User;
+use App\Rules\GoogleRecaptchaV3;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -21,6 +22,7 @@ class AuthController extends Controller
         'name' =>['required', 'max:255'  ],
         'email' =>['required', 'email', 'max:255' , 'unique:users'  ],
         'password' =>['required','confirmed', 'max:255'   , Password::min(8)->max(12)->mixedCase()->letters()->numbers()->symbols()],
+              'g-recaptcha-response' =>['required' , new  GoogleRecaptchaV3('submitRegister',.9)],
 
       ],
 

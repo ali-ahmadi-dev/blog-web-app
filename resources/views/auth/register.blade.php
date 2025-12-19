@@ -19,7 +19,7 @@
                                     <label class="form-label" for="exampleInputName1">نام و نام خانوادگی</label>
                                     <input type="text" name="name"
                                            class="form-control @error('name') border-danger  @enderror "
-                                           id="exampleInputName1" 
+                                           id="exampleInputName1"
                                            placeholder="نام و نام خانوادگی"  value="{{old('name')}}">
 
                                 </div>
@@ -33,7 +33,7 @@
                                     <input type="text" name="email"
                                            class="form-control @error('email') border-danger  @enderror"
                                            id="exampleInputEmail1" value="{{old('email')}}" placeholder="ایمیل">
-                           
+
                                 </div>
 
                                      @error('email')
@@ -46,7 +46,7 @@
                                            class="form-control @error('password') border-danger  @enderror "
                                            value="{{old('password')}}" id="exampleInputPassword1"
                                            placeholder="*********">
-                        
+
                                 </div>
 
                                     @error('password')
@@ -73,7 +73,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-sm-4">
                                         <button type="submit" class="g-recaptcha btn btn-success"
-                                                data-sitekey="{{config('services.google_recaptcha_v3.siteKey')}}"
+                                                data-sitekey="{{config('services.googel_recaptcha_v3.siteKey')}}"
                                                 data-callback='onSubmit'
                                                 data-action='submitRegister'
 

@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+
+    'googel_recaptcha_v3' => [
+        'siteKey' => env('GOOGEL_RECAPTCHA_V3_SITE_KEY'),
+        'secretkey' => env('GOOGEL_RECAPTCHA_V3_SECRET_KEY'),
+    ],
+
 ];
