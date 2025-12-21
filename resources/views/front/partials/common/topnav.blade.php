@@ -9,8 +9,8 @@
 		<div class="container">
 			<!-- Logo START -->
 			<a class="navbar-brand" href="index.html">
-				<img class="navbar-brand-item light-mode-item" src="{{Vite::image('logo.svg')}}" alt="logo">			
-				<img class="navbar-brand-item dark-mode-item" src="{{Vite::image('logo-light.svg')}}" alt="logo">			
+				<img class="navbar-brand-item light-mode-item" src="{{Vite::image('logo.svg')}}" alt="logo">
+				<img class="navbar-brand-item dark-mode-item" src="{{Vite::image('logo-light.svg')}}" alt="logo">
 			</a>
 			<!-- Logo END -->
 
@@ -49,7 +49,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" >تماس ما</a>
                 </li>
-                            
+
 				</ul>
 			</div>
 			<!-- Main navbar END -->
@@ -132,9 +132,17 @@
 
 				<!-- Offcanvas menu toggler -->
 			   <div class="nav-item align-self-end">
-					<a class="nav-link p-0" id="openedSidebar" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
-						<i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
-					</a>
+
+                   @auth()
+                       <a id="openedSidebar" class="nav-link p-0"  data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
+                           <i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
+                       </a>
+                   @endauth
+
+                   @guest()
+                       <a href="{{route('login')}}" class="btn btn-success btn-sm">ورود</a>
+                       <a href="{{route('register')}}" class="btn btn-outline-primary btn-sm">ثبت نام</a>
+                   @endguest
 				</div>
 			</div>
 			<!-- Nav right END -->

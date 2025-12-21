@@ -12,24 +12,24 @@
                         <div class="p-4 p-sm-5  rounded custom-box-shadow">
                             <h2>ورود به حساب کاربری</h2>
                             <!-- Form START -->
-                            <form  action="#" class="mt-4">
-                       
+                            <form method="post"  action="{{route('login')}}" class="mt-4">
+                            @csrf
                                 <!-- Email -->
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">ایمیل</label>
                                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="ایمیل">
-                     
+
                                 </div>
                                 <!-- Password -->
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">کلمه عبور</label>
                                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
-           
+
                                 </div>
                                 <!-- Checkbox -->
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">مرا به خاطر بسپار</label>
+                                    <label   class="form-check-label" for="exampleCheck1">مرا به خاطر بسپار</label>
                                 </div>
                                 <!-- Button -->
                                 <div class="row align-items-center">
@@ -39,7 +39,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-8 text-sm-end">
-                                        <span>آیا هنوز ثبت نام نکرده اید؟ <a href="#"><u>ثبت نام</u></a></span>
+                                        <span>آیا هنوز ثبت نام نکرده اید؟ <a href="{{route('register')}}"><u>ثبت نام</u></a></span>
                                     </div>
                                 </div>
                             </form>

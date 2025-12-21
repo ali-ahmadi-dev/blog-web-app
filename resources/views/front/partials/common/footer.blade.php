@@ -310,7 +310,7 @@ JS libraries, plugins and custom scripts -->
 		</div>
 	</div>
 
-@error('successLogin')
+@error('success')
 @include('notifications.successMessage')
 @enderror()
 

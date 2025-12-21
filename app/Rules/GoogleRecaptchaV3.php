@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Http;
 
+
+
 class GoogleRecaptchaV3 implements ValidationRule
 {
 
@@ -26,12 +28,15 @@ class GoogleRecaptchaV3 implements ValidationRule
     {
         //
 
-        $sitVerify = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.googel_recaptcha_v3.sitekey'),
+        $siteVerify = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.google_recaptcha_v3.siteKey'),
             'response' => $value,
 
         ]);
-//        dd($sitVerify);
+
+
+
 
     }
+
 }

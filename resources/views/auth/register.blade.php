@@ -66,14 +66,14 @@
                                         <label class="form-check-label" for="subscribe">عضویت در خبرنامه</label>
                                     </div>
                                     <div class="text-sm-end">
-                                        <span>آیا قبلا ثبت نام کرده اید؟ <a href="#"><u>ورود</u></a></span>
+                                        <span>آیا قبلا ثبت نام کرده اید؟ <a href="{{route('login')}}"><u>ورود</u></a></span>
                                     </div>
                                     </div>
                                 <!-- Button -->
                                 <div class="row align-items-center">
                                     <div class="col-sm-4">
                                         <button type="submit" class="g-recaptcha btn btn-success"
-                                                data-sitekey="{{config('services.googel_recaptcha_v3.siteKey')}}"
+                                                data-sitekey="{{config('services.google_recaptcha_v3.siteKey')}}"
                                                 data-callback='onSubmit'
                                                 data-action='submitRegister'
 

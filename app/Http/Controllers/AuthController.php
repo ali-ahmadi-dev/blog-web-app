@@ -17,12 +17,14 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-          $fields =$request->validate([
 
+
+        $fields =$request->validate([
         'name' =>['required', 'max:255'  ],
         'email' =>['required', 'email', 'max:255' , 'unique:users'  ],
         'password' =>['required','confirmed', 'max:255'   , Password::min(8)->max(12)->mixedCase()->letters()->numbers()->symbols()],
-              'g-recaptcha-response' =>['required' , new  GoogleRecaptchaV3('submitRegister',.9)],
+//              'g-recaptcha-response' =>['required' , new  GoogleRecaptchaV3('submitRegister',)],
+
 
       ],
 
@@ -63,10 +65,59 @@ class AuthController extends Controller
         }
 
         return redirect()->route('home')->withErrors([
-            'successLogin' => auth()->user()->name . ' عزیز خوش آمدید.'
+            'success' => auth()->user()->name . ' عزیز خوش آمدید.'
         ]);
 
 
 
     }
+
+
+
+
+    public  function login(Request $request){
+
+       $credentials = $request->validate([
+
+            'email' =>['required', 'email' ],
+            'password' =>['required'],
+
+        ],
+
+
+         [
+
+
+             'email.required' => 'ایمیل معتبر خود را وارد نمایید!',
+             'email.email' => 'ایمیل معتبر وارد نمایید!',
+             'password.required' => 'کلمه عبور خود را وارد نمایید!',
+
+         ]);
+
+      if(Auth::attempt($credentials , $request->remember )) {
+              $request->session()->regenerate();
+          return redirect()->route('home')->withErrors([
+               'success' => auth()->user()->name . ' عزیز خوش آمدید.'
+          ]);
+
+
+      }else{
+          return redirect()->back()->with('error' , 'اطلاعات وارده شده اشتباه است' );
+
+      }
+
+    }
+
+
+
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home')->withErrors(['success' , 'با موفقیت خارج شدید']);
+    }
+
+
+
 }
