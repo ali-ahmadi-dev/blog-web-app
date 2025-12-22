@@ -3,12 +3,13 @@
 namespace App\Listeners;
 
 use App\Events\UserRegistered;
-use App\Mail\WelcomeMail;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendWelcomeMailJob;
 
 
 class SendWelcomeMail
 {
+
+
     /**
      * Create the event listener.
      */
@@ -23,11 +24,7 @@ class SendWelcomeMail
     public function handle(UserRegistered $event): void
     {
 
-        Mail::to($event->user->email)
-            ->send(new WelcomeMail(
-                $event->user,
-                $event->password,   // 👈 الان وجود دارد
-                flag: $event->flag
-            ));
+
+        SendWelcomeMailJob::dispatch($event->user , $event->password,   $event->flag)->delay(now()->addSeconds(8));;
     }
 }

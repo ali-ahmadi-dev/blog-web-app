@@ -3,9 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\UserSubscribed;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendSubscriberEmailJob;
+
 
 class SendSubscriberEmail
 {
@@ -22,10 +21,8 @@ class SendSubscriberEmail
      */
     public function handle(UserSubscribed $event): void
     {
-        Mail::raw('با تشکر از شما بابت عضویت در خبر نامه ' , function ($message) use ($event) {
-             $message->to($event->user->email);
-             $message->subject(' عضویت در خبر نامه');
 
-        });
+        // Job را dispatch می‌کنیم و 15 ثانیه delay می‌دهیم
+        SendSubscriberEmailJob::dispatch($event->user)->delay(now()->addSeconds(15));
     }
 }
