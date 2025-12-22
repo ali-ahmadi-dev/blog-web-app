@@ -18,10 +18,12 @@ class WelcomeMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public User $user , public $password)
-    {
-        //
-    }
+
+    public function __construct(
+        public $user,
+        public string $password,
+        public bool $flag = false
+    ) {}
 
     /**
      * Get the message envelope.
@@ -51,7 +53,7 @@ class WelcomeMail extends Mailable
     public function attachments(): array
     {
         return [
-           Attachment::fromUrl('https://www.google.com/search?sca_esv=16b93b4960e2b313&rlz=1C1GCEA_enIR1034IR1034&sxsrf=AE3TifPIMelxtDIHNC7_isBZpSfoh8_Kcw:1765995762402&udm=2&fbs=AIIjpHzAx70LpVteQ3HFTBH-UbSXkJwSfrgFwbmI2z_c8Q7HSS2O4cDcLOjOeFfJWyOVljWNGsc9caU_MduyA8kBQ_WbohziVIG62mNi2jgdtkKVb4vEO1B5v43DUe_h0ayXzDh2Hpu1IRwlmFflxtHYkQaGJpDjaHQ6jcbfWer42WAb0uH6EejVy7pRbXPoncpn8TwEf8m2mrxPB-U-u2nDaB_FB4KA8HnhT-pP14BJTZMo_BRX5oE&q=%D8%B9%D8%A7%D9%85%D8%B1+%D8%AE%D8%A7%D9%86&sa=X&sqi=2&ved=2ahUKEwjD5N7wnsWRAxWRVPEDHWKKJ0wQtKgLegQIFBAB#sv=CAMSVhoyKhBlLVJydlNXQkxzd2g5RkVNMg5ScnZTV0JMc3doOUZFTToOQ0ljQWpuWXZmLU1BeE0gBCocCgZtb3NhaWMSEGUtUnJ2U1dCTHN3aDlGRU0YADABGAcg3a-B3QEwAkoKCAEQAhgCIAIoAg')
+//           Attachment::fromUrl('https://www.google.com/search?sca_esv=16b93b4960e2b313&rlz=1C1GCEA_enIR1034IR1034&sxsrf=AE3TifPIMelxtDIHNC7_isBZpSfoh8_Kcw:1765995762402&udm=2&fbs=AIIjpHzAx70LpVteQ3HFTBH-UbSXkJwSfrgFwbmI2z_c8Q7HSS2O4cDcLOjOeFfJWyOVljWNGsc9caU_MduyA8kBQ_WbohziVIG62mNi2jgdtkKVb4vEO1B5v43DUe_h0ayXzDh2Hpu1IRwlmFflxtHYkQaGJpDjaHQ6jcbfWer42WAb0uH6EejVy7pRbXPoncpn8TwEf8m2mrxPB-U-u2nDaB_FB4KA8HnhT-pP14BJTZMo_BRX5oE&q=%D8%B9%D8%A7%D9%85%D8%B1+%D8%AE%D8%A7%D9%86&sa=X&sqi=2&ved=2ahUKEwjD5N7wnsWRAxWRVPEDHWKKJ0wQtKgLegQIFBAB#sv=CAMSVhoyKhBlLVJydlNXQkxzd2g5RkVNMg5ScnZTV0JMc3doOUZFTToOQ0ljQWpuWXZmLU1BeE0gBCocCgZtb3NhaWMSEGUtUnJ2U1dCTHN3aDlGRU0YADABGAcg3a-B3QEwAkoKCAEQAhgCIAIoAg')
         ];
     }
 }

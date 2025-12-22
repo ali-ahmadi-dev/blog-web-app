@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
+use App\Events\UserSubscribed;
 use App\Mail\WelcomeMail;
 use App\Models\User;
 use App\Rules\GoogleRecaptchaV3;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -56,7 +59,12 @@ class AuthController extends Controller
         if ( $user) {
 
           Auth::login($user);
-          Mail::to($request->email)->send(new WelcomeMail(Auth::user(), $request->password));
+//            event(new Registered($user, $request->password));
+            event(new UserRegistered($user, $request->password, true));
+//          Mail::to($request->email)->send(new WelcomeMail(Auth::user(), $request->password));
+          if ($request->subscribe){
+               event(new UserSubscribed($user));
+          }
 
         } else{
 
