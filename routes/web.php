@@ -32,4 +32,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
+// Reset Password
 
+// Route #1
+
+Route::view('/forgot-password' , 'auth.forgot-password')->name('password.request');
+// Route #2
+Route::post('/forgot-password' , [AuthController::class, 'sendResetLinkEmail']);
+// Route #3
+Route::get('/reset-password/{token}' ,  [AuthController::class, 'resetPasswordToken'])->name('password.reset');
+
+Route::post('/reset-password' , [AuthController::class, 'passwordUpdate']);
