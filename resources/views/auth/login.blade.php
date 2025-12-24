@@ -20,12 +20,18 @@
                                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="ایمیل">
 
                                 </div>
+                                @error('email')
+                                <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
+                                @enderror
                                 <!-- Password -->
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">کلمه عبور</label>
                                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
 
                                 </div>
+                                @error('password')
+                                <small id="emailHelp" class="form-text text-danger">{{$message}}</small>
+                                @enderror
                                 <!-- Checkbox -->
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">

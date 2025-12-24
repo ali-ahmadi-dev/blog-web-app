@@ -42,4 +42,4 @@ Route::post('/forgot-password' , [AuthController::class, 'sendResetLinkEmail']);
 // Route #3
 Route::get('/reset-password/{token}' ,  [AuthController::class, 'resetPasswordToken'])->name('password.reset');
 
-Route::post('/reset-password' , [AuthController::class, 'passwordUpdate']);
+Route::post('/reset-password' , [AuthController::class, 'passwordUpdate'])->name('password.update');;

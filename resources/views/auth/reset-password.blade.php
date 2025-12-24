@@ -21,7 +21,7 @@
                             </div>
                             @enderror
                             <!-- Form START -->
-                            <form action="" method="post" class="mt-4">
+                            <form action="{{route('password.update')}}" method="post" class="mt-4">
                                 @csrf
                                 <input type="hidden" name="token" value="{{$token}}">
                                 <!-- Email -->
