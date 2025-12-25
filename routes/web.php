@@ -9,9 +9,23 @@ use Illuminate\Support\Facades\Route;
 Route::view('/' , 'front.index')->name('home');
 
 
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
+
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+    Route::middleware('role:admin')->group(function(){
+        Route::get('/', function () {
+            return view('backend.dashboard');
+        });
+
+    });
+
+//    Route::middleware('role: |')->group(function(){
+//
+//    });
+
+
 });
+
+
 
 
 
