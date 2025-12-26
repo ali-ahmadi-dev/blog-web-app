@@ -57,4 +57,86 @@ class CategoryController extends Controller
                 ->with('error', 'خطایی در ثبت دسته بندی رخ داد!');
         }
     }
+
+
+
+
+
+    public function show(int  $id): View
+    {
+        $category = Category::findOrfail($id);
+        return view('backend.partials.news.category-edit' , compact(['category']));
+    }
+
+
+
+
+    public function update(Request $request , $id): RedirectResponse
+    {
+
+
+       $category = Category::findOrfail($id);
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'slug' => ['required', 'string', 'max:50'],
+            'description' => ['nullable', 'string'],
+            'icon' => ['required'],
+        ], [
+            'name.required' => 'برای دسته بندی نام انتخاب نمایید.',
+            'name.max' => 'نام حداکثر می تواند شامل ۵۰ حرف باشد.',
+            'slug.required' => 'برای دسته بندی شناسه لاتین انتخاب نمایید.',
+            'slug.max' => 'نام حداکثر می تواند شامل ۵۰ حرف باشد.',
+            'slug.slug' => 'فرمت شناسه صحیح نمی باشد اگر شناسه بیش از یک بخش دارد هر بخش را با ( - ) از هم جدا نمایید.',
+            'icon.required' => 'برای دسته بندی آیکون انتخاب نمایید.'
+        ]);
+
+        try {
+            $category->update(  $validatedData );
+
+            return redirect()
+                ->route('category.index')
+                ->with('success', 'دسته بندی مورد نظر با موفقیت بروزرسانی گردید.');
+
+        } catch (QueryException $e) {
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'خطایی در بروزرسانی دسته بندی مورد نظر رخ داده است!');
+        }
+
+    }
+
+
+
+
+    public function destroy(int $id): RedirectResponse{
+
+        $category = Category::findOrFail($id);
+
+        try {
+            // حذف همه اخبار مرتبط
+            foreach ($category->articles as $article) {
+                $article->delete();
+            }
+
+            // حذف دسته‌بندی
+            $category->delete();
+            return redirect()->back()->with('success', 'دسته بندی مورد نظر با موفقیت حذف گردید.');
+
+        } catch (QueryException $e) {
+
+            return redirect()->back()->with('error', 'خطایی در حذف دسته بندی مورد نظر رخ داده است! ');
+        }
+    }
+
+
+
+
+
+
 }
+
+
+
+

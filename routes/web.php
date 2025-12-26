@@ -20,6 +20,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
         Route::get('/news/category' , [CategoryController::class, 'index'])->name('category.index');
         Route::post('/news/category' , [CategoryController::class, 'store'])->name('category.store');
+        Route::get('/news/category/{id}' , [CategoryController::class, 'show'])->name('category.show');
+        Route::put('/news/category/{id}' , [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('/news/category/{id}' , [CategoryController::class, 'destroy'])->name('category.destroy');
 
     });
 

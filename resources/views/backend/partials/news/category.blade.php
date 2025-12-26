@@ -102,8 +102,8 @@
                                     <div class="icon-lg shadow bg-body rounded-circle">{{$category->icon}}</div>
                                     <h4 class="mb-0 ms-3 flex-grow-1">{{$category->name}}</h4>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a href="#" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a>
-                                        <form action="#" method="post">
+                                        <a href="{{route('category.show' , $category->id)}}" class="text-success mb-0 me-2"><i class="fas fa-edit"></i></a>
+                                        <form action="{{route('category.destroy' ,$category->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="border-0 bg-transparent"><i class="fas fa-times-circle text-danger"></i></button>
@@ -136,9 +136,6 @@
                     @else
                     <div class="alert alert-info">تا این لحظه دسته بندی ثبت نشده است!</div>
                     @endif
-                </div>
-                <div class="pagination d-flex justify-content-center align-items-center mt-4">
-                    {{--                {{$categories->links('pagination::bootstrap-5')}}--}}
                 </div>
 
                 <div class="pagination d-flex justify-content-center align-items-center mt-4">
