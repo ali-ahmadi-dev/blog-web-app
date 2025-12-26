@@ -34,6 +34,24 @@
 <!-- =======================
 Footer END -->
 
+
+
+
+
+
+@if(session()->has('success'))
+    @include('notifications.successMessageSession')
+@endif
+
+
+@if(session()->has('error'))
+    @include('notifications.errorMessageSession')
+@endif
+
+
+
+
+
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
 

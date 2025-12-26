@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\dashboard\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,7 +17,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
             return view('backend.dashboard');
         });
 
+
+        Route::get('/news/category' , [CategoryController::class, 'index'])->name('category.index');
+        Route::post('/news/category' , [CategoryController::class, 'store'])->name('category.store');
+
     });
+
+
+
+
 
 //    Route::middleware('role: |')->group(function(){
 //
