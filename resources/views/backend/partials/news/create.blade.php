@@ -1,4 +1,11 @@
-<section class="py-4">
+
+
+@extends('layouts.backend.master')
+
+@section('content')
+
+
+    <section class="py-4">
     <div class="container">
         <div class="row pb-4">
             <div class="col-12">
@@ -7,7 +14,7 @@
             </div>
         </div>
         <div class="row">
-            <form class="row" action="#" method="post" enctype="multipart/form-data">
+            <form class="row" action="{{route('article.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-sm-12 col-md-8">
                     <!-- Chart START -->
@@ -235,3 +242,4 @@
         </div>
     </div>
 </section>
+@endsection

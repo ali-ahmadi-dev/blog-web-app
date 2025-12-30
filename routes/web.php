@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\ArticleController;
+use App\Http\Controllers\Dashboard\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,6 +13,7 @@ Route::view('/' , 'front.index')->name('home');
 
 
 Route::prefix('dashboard')->middleware('auth')->group(function(){
+
     Route::middleware('role:admin')->group(function(){
         Route::get('/', function () {
             return view('backend.dashboard');
@@ -23,6 +25,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/news/category/{id}' , [CategoryController::class, 'show'])->name('category.show');
         Route::put('/news/category/{id}' , [CategoryController::class, 'update'])->name('category.update');
         Route::delete('/news/category/{id}' , [CategoryController::class, 'destroy'])->name('category.destroy');
+
+
+        Route::resource('article', ArticleController::class);
 
     });
 
